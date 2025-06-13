@@ -1,13 +1,20 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Lightbulb, Film, Rocket } from 'lucide-react';
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 30 },
+import { Variants } from 'framer-motion';
+const sectionVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.3, duration: 0.8, ease: 'easeOut' },
+    transition: {
+      delay: i * 0.3,
+      duration: 0.6,
+      ease: [0.42, 0, 0.58, 1], // cubic-bezier for smooth easing
+    },
   }),
 };
 
