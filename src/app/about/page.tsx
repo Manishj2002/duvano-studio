@@ -1,5 +1,4 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { Lightbulb, Film, Rocket } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins, Orbitron } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
-const orbitron = Orbitron({ subsets: ['latin'], weight: ['400', '700'] });
+// const orbitron = Orbitron({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: 'Duvano Studio - India’s First Indie Anime Studio',
