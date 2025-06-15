@@ -36,13 +36,6 @@ export const teamMembers: TeamMember[] = [
     description: 'Main story + plot development',
   },
   {
-    id: '4',
-    name: 'vivek j',
-    role: 'mangaka (Main)',
-    avatar: '/images/avatars/img5.jpg',
-    description: 'Creates the anime’s manga-style artwork.',
-  },
-  {
   id: '5',
   name: 'dhruv patil',
   role: 'General Support',
@@ -92,17 +85,10 @@ export const teamMembers: TeamMember[] = [
   description: 'Creates immersive backgrounds.',
 },
 {
-  id: '12',
-  name: 'solinxjo',
-  role: 'mangaka (Secondary)',
-  avatar: '/images/avatars/img13.jpg',
-  description: 'Creates manga-style artwork.',
-},
-{
   id: '13',
   name: 'tsukinohana',
   role: 'music composer',
-  avatar: '/images/avatars/img15.jpg',
+  avatar: '/images/avatars/img10.jpg',
   description: 'Composes the soundtrack.',
 },
 {

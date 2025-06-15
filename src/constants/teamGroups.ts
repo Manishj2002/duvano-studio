@@ -78,7 +78,7 @@ export const teamGroups: TeamGroup[] = [
         id: '9',
         name: 'roy',
         role: 'Animator (Secondary)',
-        avatar: '/images/avatars/img10.jpg',
+        avatar: '/images/avatars/img13.jpg',
         description: 'Supporting animation scenes.',
       },
     ],
@@ -103,32 +103,13 @@ export const teamGroups: TeamGroup[] = [
     ],
   },
   {
-    category: 'Mangakas',
-    members: [
-      {
-        id: '4',
-        name: 'vivek j',
-        role: 'Mangaka (Main)',
-        avatar: '/images/avatars/img5.jpg',
-        description: 'Creates the anime’s manga-style artwork.',
-      },
-      {
-        id: '12',
-        name: 'solinxjo',
-        role: 'Mangaka (Secondary)',
-        avatar: '/images/avatars/img13.jpg',
-        description: 'Creates manga-style artwork.',
-      },
-    ],
-  },
-  {
     category: 'Music & Support',
     members: [
       {
         id: '13',
         name: 'tsukinohana',
         role: 'Music Composer',
-        avatar: '/images/avatars/img15.jpg',
+        avatar: '/images/avatars/img10.jpg',
         description: 'Composes the soundtrack.',
       },
       {

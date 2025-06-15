@@ -103,11 +103,14 @@ export default function Join() {
             options={[
               { value: '', label: 'Select a role' },
               { value: 'animator', label: 'Animator' },
-              { value: 'artist', label: 'Artist' },
               { value: 'story-writer', label: 'Story Writer' },
+              { value: 'character-designer', label: 'Character Designer' },
+              { value: 'mangaka', label: 'Mangaka' },
               { value: 'voice-actor', label: 'Voice Actor' },
+              { value: 'music-composer', label: 'Music Composer' },
               { value: 'developer', label: 'Developer' },
               { value: 'editor', label: 'Editor' },
+              { value: 'project-manager', label: 'Project Manager' },
             ]}
           />
           <InputField

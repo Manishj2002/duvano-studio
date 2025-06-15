@@ -22,10 +22,10 @@ export default function Contact() {
           <div>
             <h2 className="text-xl font-poppins text-soft-red mb-2">Email</h2>
             <a
-              href="mailto:contact@duvanostudio.com"
+              href="mailto:duvanostudio@gmail.com"
               className="text-white-highlight hover:text-neon-blue transition"
             >
-              contact@duvanostudio.com
+              duvanostudio@gmail.com
             </a>
           </div>
           <div>
@@ -41,7 +41,7 @@ export default function Contact() {
             <h2 className="text-xl font-poppins text-soft-red mb-2">Social Media</h2>
             <div className="flex justify-center space-x-6">
               <Link
-                href="https://instagram.com/duvanostudio"
+                href="https://www.instagram.com/duvanostudios/"
                 className="text-neon-blue hover:text-soft-red transition"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@ export default function Contact() {
                 </svg>
               </Link>
               <Link
-                href="https://youtube.com/duvanostudio"
+                href="https://www.youtube.com/@DuvanoStudio"
                 className="text-neon-blue hover:text-soft-red transition"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
