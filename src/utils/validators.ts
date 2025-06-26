@@ -1,6 +1,6 @@
-import { FormData } from './formHandler';
+import type { JoinFormData } from './formHandler';
 
-export const validateForm = (formData: FormData) => {
+export const validateForm = (formData: JoinFormData) => {
   const errors: { [key: string]: string } = {};
 
   if (!formData.name.trim()) {
