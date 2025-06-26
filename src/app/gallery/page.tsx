@@ -55,7 +55,6 @@ and join us on this exciting anime journey!
                 {item.type === 'image' ? (
                   <img
                     src={item.src}
-                    alt={item.alt}
                     className="w-full h-60 object-cover"
                   />
                 ) : (
@@ -63,10 +62,8 @@ and join us on this exciting anime journey!
                     controls
                     src={item.src}
                     className="w-full h-60 object-cover"
-                    title={item.alt}
                   />
                 )}
-                <p className="text-white-highlight text-sm p-4 text-center">{item.alt}</p>
               </motion.div>
             ))}
         </div>
