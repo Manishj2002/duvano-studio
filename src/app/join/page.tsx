@@ -9,14 +9,7 @@ import { submitForm } from '../../utils/formHandler';
 import { validateForm } from '../../utils/validators';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
-
-interface FormData {
-  name: string;
-  email: string;
-  role: string;
-  portfolio: string;
-  reason: string;
-}
+import type { JoinFormData } from '../../utils/formHandler';
 
 interface FormErrors {
   name?: string;
@@ -26,34 +19,57 @@ interface FormErrors {
   reason?: string;
 }
 
-const initialState: FormData = {
+const initialState: JoinFormData = {
   name: '',
   email: '',
   role: '',
   portfolio: '',
-  portfolioFile: null, // new
+  portfolioFile: null,
   reason: '',
 };
 
-
 export default function Join() {
-  const [formData, setFormData] = useState<FormData>(initialState);
+  const [formData, setFormData] = useState<JoinFormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
- const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-) => {
-  const { name, value } = e.target;
-  setFormData({ ...formData, [name]: value });
-  setErrors({ ...errors, [name]: '' });
-};
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: '' });
+  };
 
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const file = e.target.files?.[0] || null;
-  setFormData((prev) => ({ ...prev, portfolioFile: file }));
-};
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
+    const formDataUpload = new FormData();
+    formDataUpload.append('file', file);
+    formDataUpload.append('upload_preset', 'duvano_uploads'); // your Cloudinary preset
+
+    try {
+const res = await fetch('https://api.cloudinary.com/v1_1/degoktu3s/raw/upload', {
+  method: 'POST',
+  body: formDataUpload,
+});
+
+
+
+      const data = await res.json();
+      setFormData((prev) => ({
+        ...prev,
+        portfolio: data.secure_url,
+        
+      }));
+      toast.success('File uploaded successfully!');
+    } catch (err) {
+      toast.error('File upload failed.');
+      console.error(err);
+    
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +86,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (result.success) {
       setSubmitStatus('success');
       toast.success('Application submitted successfully!');
-      setFormData(initialState); // Reset form
+      setFormData(initialState);
     } else {
       setSubmitStatus('error');
       toast.error('Submission failed. Please try again.');
@@ -124,25 +140,24 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             ]}
           />
           <div className="space-y-2">
-  <label className="block text-white-highlight font-medium">Portfolio Link or File</label>
-  <input
-    type="text"
-    name="portfolio"
-    value={formData.portfolio}
-    onChange={handleChange}
-    placeholder="Artstation, YouTube, Instagram, etc."
-    className="w-full p-3 border-2  rounded bg-dark-secondary text-white-highlight focus:outline-none"
-  />
-  <div className="text-center text-white-highlight">— OR —</div>
-  <input
-    type="file"
-    accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
-    onChange={handleFileChange}
-    className="w-full p-3 rounded bg-dark-secondary text-white-highlight file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-soft-red file:text-white-highlight hover:file:bg-neon-blue"
-  />
-  {errors.portfolio && <p className="text-soft-red text-sm">{errors.portfolio}</p>}
-</div>
-
+            <label className="block text-white-highlight font-medium">Portfolio Link or File</label>
+            <input
+              type="text"
+              name="portfolio"
+              value={formData.portfolio}
+              onChange={handleChange}
+              placeholder="Artstation, YouTube, Instagram, etc."
+              className="w-full p-3 border-2 rounded bg-dark-secondary text-white-highlight focus:outline-none"
+            />
+            <div className="text-center text-white-highlight">— OR —</div>
+            <input
+              type="file"
+              accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
+              onChange={handleFileChange}
+              className="w-full p-3 rounded bg-dark-secondary text-white-highlight file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-soft-red file:text-white-highlight hover:file:bg-neon-blue"
+            />
+            {errors.portfolio && <p className="text-soft-red text-sm">{errors.portfolio}</p>}
+          </div>
           <InputField
             label="Why do you want to join? (100 words max)"
             name="reason"

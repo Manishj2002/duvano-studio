@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { mediaItems, MediaItem } from '../../constants/mediaItems';
+import { mediaItems, } from '../../constants/mediaItems';
 
 export default function Gallery() {
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
