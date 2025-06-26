@@ -4,7 +4,7 @@ export interface FormData {
   name: string;
   email: string;
   role: string;
-  portfolio: string;
+ portfolioFile: File | null; // new
   reason: string;
 }
 

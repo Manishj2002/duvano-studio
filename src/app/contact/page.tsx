@@ -31,7 +31,7 @@ export default function Contact() {
           <div>
             <h2 className="text-xl font-poppins text-soft-red mb-2">Discord</h2>
             <Link
-              href="https://discord.gg/duvano"
+              href="https://discord.gg/FvdSrF6W"
               className="text-white-highlight hover:text-neon-blue transition"
             >
               Join our Discord community

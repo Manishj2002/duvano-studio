@@ -31,19 +31,29 @@ const initialState: FormData = {
   email: '',
   role: '',
   portfolio: '',
+  portfolioFile: null, // new
   reason: '',
 };
+
 
 export default function Join() {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' });
-  };
+ const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value } = e.target;
+  setFormData({ ...formData, [name]: value });
+  setErrors({ ...errors, [name]: '' });
+};
+
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0] || null;
+  setFormData((prev) => ({ ...prev, portfolioFile: file }));
+};
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,14 +123,26 @@ export default function Join() {
               { value: 'project-manager', label: 'Project Manager' },
             ]}
           />
-          <InputField
-            label="Portfolio Link"
-            name="portfolio"
-            value={formData.portfolio}
-            onChange={handleChange}
-            error={errors.portfolio}
-            placeholder="Artstation, YouTube, Instagram, etc."
-          />
+          <div className="space-y-2">
+  <label className="block text-white-highlight font-medium">Portfolio Link or File</label>
+  <input
+    type="text"
+    name="portfolio"
+    value={formData.portfolio}
+    onChange={handleChange}
+    placeholder="Artstation, YouTube, Instagram, etc."
+    className="w-full p-3 border-2  rounded bg-dark-secondary text-white-highlight focus:outline-none"
+  />
+  <div className="text-center text-white-highlight">— OR —</div>
+  <input
+    type="file"
+    accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
+    onChange={handleFileChange}
+    className="w-full p-3 rounded bg-dark-secondary text-white-highlight file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-soft-red file:text-white-highlight hover:file:bg-neon-blue"
+  />
+  {errors.portfolio && <p className="text-soft-red text-sm">{errors.portfolio}</p>}
+</div>
+
           <InputField
             label="Why do you want to join? (100 words max)"
             name="reason"
@@ -141,7 +163,7 @@ export default function Join() {
         </form>
         <p className="text-center mt-6 text-white-highlight">
           Already joined?{' '}
-          <Link href="https://discord.gg/veGsqRY6" className="text-neon-blue hover:text-soft-red">
+          <Link href="https://discord.gg/FvdSrF6W" className="text-neon-blue hover:text-soft-red">
             Join our Discord
           </Link>
         </p>

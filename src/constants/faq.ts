@@ -5,11 +5,18 @@ export interface FAQ {
 }
 
 export const faqs: FAQ[] = [
-  {
-    id: '1',
-    question: 'Is the team paid?',
-    answer: 'Currently, Duvano Studio is a passion-driven indie project. We aim to secure funding to offer paid roles in the future.',
-  },
+ {
+  id: '1',
+  question: 'Is the team paid?',
+  answer: `Currently, Duvano Studio is a passion-driven indie project. 
+Payment will be made at the end of the project, based on:
+
+- Work contribution  
+- Role-specific responsibilities  
+- Final project profit  
+
+If no profit is generated, no payment will be made. However, the Team Member will still receive official credit.`,
+},
   {
     id: '2',
     question: 'Who can apply?',
