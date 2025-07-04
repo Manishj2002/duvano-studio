@@ -2,10 +2,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { mediaItems, } from '../../constants/mediaItems';
+import { mediaItems } from '../../constants/mediaItems';
 
 export default function Gallery() {
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null); // ✨ modal state
 
   return (
     <section className="container mx-auto py-16 px-4">
@@ -19,9 +20,9 @@ export default function Gallery() {
         </h1>
         <p className="text-lg text-white-highlight max-w-3xl mx-auto text-center mb-8">
           This is our team’s work — as we continue developing our project, we’ll keep adding more videos and images here.  
-Follow us on <span className="text-soft-red font-semibold">YouTube</span> and{' '}
-<span className="text-soft-red font-semibold">Instagram</span> to stay updated, support our artists,  
-and join us on this exciting anime journey!
+          Follow us on <span className="text-soft-red font-semibold">YouTube</span> and{' '}
+          <span className="text-soft-red font-semibold">Instagram</span> to stay updated, support our artists,  
+          and join us on this exciting anime journey!
         </p>
 
         {/* Filter Tabs */}
@@ -48,7 +49,7 @@ and join us on this exciting anime journey!
             .map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-dark-secondary rounded-xl overflow-hidden shadow-xl"
+                className="bg-dark-secondary rounded-xl overflow-hidden shadow-xl cursor-pointer"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
               >
@@ -56,6 +57,7 @@ and join us on this exciting anime journey!
                   <img
                     src={item.src}
                     className="w-full h-60 object-cover"
+                    onClick={() => setSelectedImage(item.src)} // ✨ open modal
                   />
                 ) : (
                   <video
@@ -68,6 +70,27 @@ and join us on this exciting anime journey!
             ))}
         </div>
       </motion.div>
+
+      {/* ✨ Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)} // ✨ close modal on backdrop
+        >
+          <div className="relative max-w-4xl w-full px-4" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="absolute top-0 right-0 text-white text-2xl font-bold"
+              onClick={() => setSelectedImage(null)}
+            >
+              &times;
+            </button>
+            <img
+              src={selectedImage}
+              className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
