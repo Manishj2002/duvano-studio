@@ -60,6 +60,7 @@ export const mediaItems: MediaItem[] = [
   { type: 'image', src: '/gallery/pics/img53.jpg', alt: 'Illustration 35' },
   { type: 'image', src: '/gallery/pics/img54.jpg', alt: 'Illustration 35' },
   { type: 'image', src: '/gallery/pics/img55.jpg', alt: 'Illustration 35' },
+  { type: 'video', src: '/gallery/videos/video1.mp4', alt: 'Animation Clip 2' },
   { type: 'video', src: '/gallery/videos/video2.mp4', alt: 'Animation Clip 2' },
   { type: 'video', src: '/gallery/videos/video3.mp4', alt: 'Animation Clip 3' },
   { type: 'video', src: '/gallery/videos/video4.mp4', alt: 'Animation Clip 4' },
@@ -73,4 +74,7 @@ export const mediaItems: MediaItem[] = [
   { type: 'video', src: '/gallery/videos/video12.mp4', alt: 'Animation Clip 12' },
   { type: 'video', src: '/gallery/videos/video13.mp4', alt: 'Animation Clip 13' },
   { type: 'video', src: '/gallery/videos/video14.mp4', alt: 'Animation Clip 14' },
+  { type: 'video', src: '/gallery/videos/video15.mp4', alt: 'Animation Clip 15' },
+  { type: 'video', src: '/gallery/videos/video16.mp4', alt: 'Animation Clip 16' },
+  { type: 'video', src: '/gallery/videos/video17.mp4', alt: 'Animation Clip 17' },
 ];
